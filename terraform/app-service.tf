@@ -76,6 +76,10 @@ resource "azurerm_linux_web_app" "app" {
       priority = 1000
     }
   }
+
+  identity {
+    type = "SystemAssigned"
+  }
 }
 
 // This is required as when the app service is created 'basic auth' is set as disabled which is required for the SCM deploy.
