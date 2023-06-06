@@ -47,13 +47,14 @@ resource "azurerm_linux_web_app" "app" {
 
   service_plan_id = azurerm_service_plan.app[each.value].id
 
+  virtual_network_subnet_id = azurerm_subnet.app_01[each.value].id
+
   https_only = true
 
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY"             = azurerm_application_insights.ai[each.value].instrumentation_key
     "APPLICATIONINSIGHTS_CONNECTION_STRING"      = azurerm_application_insights.ai[each.value].connection_string
     "ApplicationInsightsAgent_EXTENSION_VERSION" = "~3"
-    "location"                                   = each.value
   }
 
   site_config {
