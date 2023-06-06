@@ -29,4 +29,6 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   delegated_subnet_id = azurerm_subnet.mysql_01[each.value].id
   private_dns_zone_id = azurerm_private_dns_zone.dns["mysql"].id
   sku_name            = "B_Standard_B1s"
+
+  zone = 3
 }
