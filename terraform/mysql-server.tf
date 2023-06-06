@@ -21,8 +21,8 @@ resource "azurerm_mysql_flexible_server" "mysql" {
   resource_group_name = azurerm_resource_group.mysql[each.value].name
   location            = azurerm_resource_group.mysql[each.value].location
 
-  administrator_login          = "addy"
-  administrator_login_password = random_password.mysql.result
+  administrator_login    = "addy"
+  administrator_password = random_password.mysql.result
 
   backup_retention_days = 7
 
